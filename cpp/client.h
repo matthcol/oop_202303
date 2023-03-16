@@ -22,7 +22,9 @@ public:
     const std::string& getLastname() const;
     void setLastname(const std::string& lastname);
 
-    std::string toString() const;
+    // virtual autorise la liaison tardive sur cette méthode
+    // dans les classes filles
+    virtual std::string toString() const;
 };
 
 std::ostream& operator<<(std::ostream& out, const Client& client);

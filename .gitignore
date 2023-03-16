@@ -1,0 +1,10 @@
+*.exe
+*.obj
+*.o
+*.ilk
+*.pdb
+__pycache__/
+.vscode/
+.idea
+target/
+*.csv

@@ -13,4 +13,6 @@ public:
     int getSatisfactionLevel() const;
     void setSatisfactionLevel(int satisfactionLevel);
 
+    virtual std::string toString() const override;
+
 };

@@ -1,5 +1,7 @@
 #include "RegisteredClient.h"
 
+#include <sstream>
+
 RegisteredClient::RegisteredClient(
     int id, const std::string &firstname, const std::string &lastname, 
     int satisfactionLevel
@@ -15,4 +17,11 @@ int RegisteredClient::getSatisfactionLevel() const
 void RegisteredClient::setSatisfactionLevel(int satisfactionLevel)
 {
     this->m_satisfactionLevel = satisfactionLevel;
+}
+
+std::string RegisteredClient::toString() const
+{
+    std::stringstream buf;
+    buf << Client::toString() << this->m_satisfactionLevel;
+    return  buf.str();
 }
