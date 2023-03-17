@@ -3,7 +3,8 @@ package data;
 import java.util.*;
 import java.util.stream.Collectors;
 
-public class Polygon extends Form implements Mesurable2D {
+public class Polygon extends Form implements Mesurable2D, Iterable<Point> {
+
 
     private List<Point> summits;
 
@@ -44,5 +45,11 @@ public class Polygon extends Form implements Mesurable2D {
     public double perimeter() {
         // TODO
         return 3;
+    }
+
+    @Override
+    public Iterator<Point> iterator() {
+        // TODO: choose if you need an unmodifiable iterator
+        return this.summits.iterator();
     }
 }

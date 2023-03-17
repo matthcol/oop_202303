@@ -3,7 +3,7 @@ package data;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.util.List;
+import java.util.*;
 
 public class FormTest2 {
 
@@ -23,7 +23,6 @@ public class FormTest2 {
         circleC = new Circle("C", 5.25, ptA);
         polyABC = new Polygon("P", ptA, ptB, ptC);
 
-        // TODO: reunite all forms in list forms
         forms = List.of(ptA, ptB, ptC, circleC, polyABC);
     }
 
@@ -70,6 +69,75 @@ public class FormTest2 {
             }
         }
         System.out.println("Total area: " + totalArea);
+    }
+
+    @Test
+    void designPatternIteratorImplicit() {
+        // Rappel: forms = List.of(ptA, ptB, ptC, circleC, polyABC);
+
+        // What is the real class of list forms
+        System.out.println(forms.getClass());
+        // class java.util.ImmutableCollections$ListN
+
+        System.out.println("Instance of List<E> ? " + (forms instanceof List));
+
+        // iterator implicite avec for "foreach" en Java 5
+        for (Form f : forms) {
+            System.out.println("\t * " + f);
+        }
+        for (var f : forms) {
+            System.out.println("\t - " + f);
+        }
+        forms.forEach((Form f) -> System.out.println("\t ° " + f));
+        forms.forEach((var f) -> System.out.println("\t * " + f));
+        forms.forEach(f -> System.out.println("\t - " + f));
+
+    }
+
+    @Test
+    void  designPatternIteratorPolygon() {
+        // for (var e: ptA) {}  // Point is not iterable
+
+        // Polygon has been made Iterable<Point>
+        System.out.println("Summits of polygon: " + polyABC);
+        for (var summit: polyABC) {
+            System.out.println("\t- summit: " + summit);
+        }
+    }
+
+    @Test
+    void designPatternIteratorExplicit() {
+//        var it1 = forms.iterator();
+//        System.out.println(it1.getClass());
+        // class java.util.ImmutableCollections$ListItr
+
+        List<Form> formsAL = new ArrayList<>(forms);
+        List<Form> formsLL = new LinkedList<>(forms);
+        Set<Form>  formSet = new HashSet<>(forms);
+        NavigableSet<Form> formOrderedSet = new TreeSet<>(
+                Comparator.comparing(Form::getName)
+                        .thenComparing(f->f.getClass().getSimpleName())
+        );
+        formOrderedSet.addAll(formSet);
+
+        for (var formCollection: List.of(
+                forms,
+                formsAL,
+                formsLL,
+                formSet,
+                formOrderedSet)
+        ){
+            System.out.println(formCollection.getClass().getName()
+                    + ": " + formCollection);
+            Iterator<Form> it = formCollection.iterator();
+            System.out.println("Iterator: " + it.getClass().getName());
+            while (it.hasNext()) {
+                var f = it.next();
+                System.out.println("\t - item: " + f);
+            }
+            System.out.println();
+        }
+
     }
 
 }
