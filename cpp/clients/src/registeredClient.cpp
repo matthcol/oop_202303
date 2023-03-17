@@ -9,6 +9,10 @@ RegisteredClient::RegisteredClient(
 {
 }
 
+RegisteredClient::~RegisteredClient()
+{
+}
+
 int RegisteredClient::getSatisfactionLevel() const
 {
     return this->m_satisfactionLevel;

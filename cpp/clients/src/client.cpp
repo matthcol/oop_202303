@@ -12,6 +12,10 @@ Client::Client(int id, const std::string &firstname, const std::string &lastname
 {
 }
 
+Client::~Client()
+{
+}
+
 int Client::getId() const
 {
     return this->m_id;

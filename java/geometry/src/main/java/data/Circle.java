@@ -1,6 +1,6 @@
 package data;
 
-public class Circle extends Form {
+public class Circle extends Form implements Mesurable2D {
 
     private double radius;
 
@@ -40,5 +40,15 @@ public class Circle extends Form {
         sb.append(", c=").append(center.getName());
         sb.append(']');
         return sb.toString();
+    }
+
+    @Override
+    public double area() {
+        return Math.PI*radius*radius;
+    }
+
+    @Override
+    public double perimeter() {
+        return 2*Math.PI*radius;
     }
 }

@@ -9,6 +9,7 @@ private:
 public:
     RegisteredClient(int id, const std::string& firstname, 
             const std::string& lastname, int satisfactionLevel);
+    virtual ~RegisteredClient();
 
     int getSatisfactionLevel() const;
     void setSatisfactionLevel(int satisfactionLevel);

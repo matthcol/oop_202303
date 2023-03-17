@@ -12,6 +12,7 @@ private:
 public:
     Client();
     Client(int id, const std::string& firstname, const std::string& lastname);
+    virtual ~Client();
 
     int getId() const;
     void setId(int id);

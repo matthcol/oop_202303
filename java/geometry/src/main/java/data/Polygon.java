@@ -3,7 +3,7 @@ package data;
 import java.util.*;
 import java.util.stream.Collectors;
 
-public class Polygon extends Form {
+public class Polygon extends Form implements Mesurable2D {
 
     private List<Point> summits;
 
@@ -32,5 +32,17 @@ public class Polygon extends Form {
                 )
                 .append('\\')
                 .toString();
+    }
+
+    @Override
+    public double area() {
+        // TODO
+        return 2;
+    }
+
+    @Override
+    public double perimeter() {
+        // TODO
+        return 3;
     }
 }
