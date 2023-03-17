@@ -52,5 +52,10 @@ for sourceCode in itertools.chain(
 ):
     print(sourceCode)
 
+
+print("\nCode écrit pendant le stage (smarter):")
 extensions = ['py', 'cpp', 'h', 'java']
-dirCode
+for sourceCode in itertools.chain.from_iterable( 
+    (dirCode.rglob(f"*.{ext}") for ext in extensions)
+):
+    print(sourceCode)
